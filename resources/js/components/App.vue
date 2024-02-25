@@ -16,11 +16,19 @@
             </tr>
             </thead>
             <tbody>
+<!--            <tr v-for="link in links" :key="link.id">-->
+<!--                <td>{{ link.id }}</td>-->
+<!--                <td>{{ link.original_url }}</td>-->
+<!--                <td><a :href="link.short_url">{{ link.short_url }}</a></td>-->
+<!--            </tr>-->
+
             <tr v-for="link in links" :key="link.id">
                 <td>{{ link.id }}</td>
                 <td>{{ link.original_url }}</td>
-                <td><a :href="link.shortened_url">{{ link.shortened_url }}</a></td>
+                <td><a :href="'/redirect/' + link.original_url">{{ link.short_url }}</a></td>
             </tr>
+
+
             </tbody>
         </table>
 
@@ -61,7 +69,6 @@ export default {
             axios.get(`api/link`)
                 .then(response => {
                     this.links = response.data;
-                    console.log(response.data);
                 })
                 .catch((err) => {
                     this.error = "Failed to retrieve data: " + err;
