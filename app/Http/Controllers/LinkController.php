@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Link;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class LinkController extends Controller
@@ -34,10 +35,12 @@ class LinkController extends Controller
         return response()->json(['shortened_url' => $shortUrl]);
     }
 
-    public function redirect($code)
+    public function redirect($id)
     {
-        $url = Link::where('short_url', config('app.url') . '/' . $code)->firstOrFail();
-        return redirect($url->original_url);
+
+        $link = Link::where('id', $id)->firstOrFail();
+        return redirect($link->original_url);
+
     }
 
     public function showJson(){

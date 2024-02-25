@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <form @submit.prevent="submitUrl" class="mt-3">
             <div class="input-group mb-3">
                 <input v-model="url" type="text" class="form-control" placeholder="Enter URL">
@@ -16,19 +16,11 @@
             </tr>
             </thead>
             <tbody>
-<!--            <tr v-for="link in links" :key="link.id">-->
-<!--                <td>{{ link.id }}</td>-->
-<!--                <td>{{ link.original_url }}</td>-->
-<!--                <td><a :href="link.short_url">{{ link.short_url }}</a></td>-->
-<!--            </tr>-->
-
             <tr v-for="link in links" :key="link.id">
                 <td>{{ link.id }}</td>
                 <td>{{ link.original_url }}</td>
-                <td><a :href="'/redirect/' + link.original_url">{{ link.short_url }}</a></td>
+                <td><a :href="'/redirect/' + link.id ">{{ link.short_url }}</a></td>
             </tr>
-
-
             </tbody>
         </table>
 
@@ -78,3 +70,10 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+</style>
