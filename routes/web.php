@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/', [App\Http\Controllers\LinkController::class,  'index']);
 Route::post('/shorten', [App\Http\Controllers\LinkController::class,  'shorten']);
-Route::get('/redirect/{code}', [App\Http\Controllers\LinkController::class,  'redirect']);
+Route::get('/{code}', [App\Http\Controllers\LinkController::class,  'redirect']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

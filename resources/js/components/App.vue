@@ -19,7 +19,7 @@
             <tr v-for="link in links" :key="link.id">
                 <td>{{ link.id }}</td>
                 <td>{{ link.original_url }}</td>
-                <td><a :href="'/redirect/' + link.id ">{{ link.short_url }}</a></td>
+                <td><a :href="'/' + link.id ">{{ link.short_url }}</a></td>
             </tr>
             </tbody>
         </table>
