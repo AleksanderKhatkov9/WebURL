@@ -44,8 +44,6 @@ class LinkController extends Controller
         ]);
 
         $body = json_decode($response->getBody(), true);
-        dd($response->getBody());
-
 
         if (!empty($body['matches'])) {
             return response()->json(['message' => 'Unsafe URL'], 400);
